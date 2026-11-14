@@ -1,0 +1,31 @@
+name: Teste real do Estúdio (navegador)
+on:
+  push:
+    branches: [estudio-profissional]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Preparar navegador
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Abrir site e testar editor
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/norma-server.log 2>&1 &
+          node tests/browser-smoke.mjs
+          node tests/browser-media.mjs
+      - name: Salvar resultados de teste
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidencias-estudio
+          path: test-results/browser/
+          if-no-files-found: warn

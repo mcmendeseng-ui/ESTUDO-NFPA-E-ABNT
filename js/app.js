@@ -1,9 +1,12 @@
+import { load as loadStudio } from './estudio/store.js';
 import {DEFAULT_PROJECT,newScene,newLesson,timeLabel,lessonDuration,locateScene,clamp,makeId} from './data.js';
 import {loadProject,saveProject,exportProject,readProject} from './storage.js';
 import {renderStage,escapeHtml as esc} from './motion.js';
 import {directStage,exampleCues,MOTION_LABELS} from './choreography.js';
 
 let project=loadProject();
+const technicalDemo = { id: 'demo-quadro', title: 'Do quadro ao circuito', description: 'Abertura de quadro, vista explodida, comutação e leitura de um gráfico.', module: 'Fundamentos técnicos', scenes: Array(4) };
+let studioLessons = [technicalDemo];
 let lessonIndex=0,sceneIndex=0,playhead=0,playing=false,narrate=false,lastFrame=0;
 let speech=null, audioPlayer=null, voiceList=[];
 const el=id=>document.getElementById(id);
@@ -15,7 +18,11 @@ function persist(){const ok=saveProject(project);el('save-status').textContent=o
 function setPage(page){document.querySelectorAll('[data-page]').forEach(n=>n.classList.toggle('hidden',n.dataset.page!==page));document.querySelectorAll('[data-nav]').forEach(n=>n.classList.toggle('is-active',n.dataset.nav===page));history.replaceState(null,'',`#${page}`);if(page==='studio')renderStudio();window.scrollTo({top:0,behavior:'smooth'});}
 function statusText(value){return {authorial:'Autoral',draft:'Em elaboração',reviewed:'Revisado'}[value]||'Em elaboração'}
 function refreshLibrary(){
-  el('lesson-grid').innerHTML=project.lessons.map((l,i)=>{
+  const studioCards = studioLessons.map(l => {
+    const id = encodeURIComponent(l.id), title = esc(l.title);
+    return `<article class="lesson-card"><div class="lesson-thumb lesson-thumb--authorial"><span class="thumb-chip">${esc(l.module||'Estúdio')}</span><div class="thumb-float"><b>ANIMAÇÃO TÉCNICA</b></div></div><div class="lesson-body"><h3>${title}</h3><p>${esc(l.description)}</p><div class="lesson-meta"><span>▣ ${l.scenes.length} CENAS</span></div><div class="lesson-body-actions"><a class="button button--small button--primary" href="./studio.html?assistir=${id}">▶ Assistir</a><a class="button button--small button--subtle" href="./studio.html?aula=${id}">Editar ↗</a></div></div></article>`;
+  }).join('');
+  el('lesson-grid').innerHTML=studioCards+project.lessons.map((l,i)=>{
     const duration=lessonDuration(l);
     return `<article class="lesson-card"><div class="lesson-thumb lesson-thumb--${esc(l.status)}"><span class="thumb-chip">${esc(l.category)}</span><div class="thumb-float"><b>${l.status==='authorial'?'01 — MÉTODO':'NORMA EM CENA'}</b></div></div><div class="lesson-body"><h3>${esc(l.title)}</h3><p>${esc(l.description)}</p><div class="lesson-meta"><span>▣ ${l.scenes.length} ${l.scenes.length===1?'CENA':'CENAS'}</span><span>◷ ${timeLabel(duration)}</span><span>${esc(statusText(l.status))}</span></div><div class="lesson-body-actions"><button type="button" class="button button--small button--primary" data-card-watch="${i}">▶ Assistir</button><button type="button" class="button button--small button--subtle" data-card-edit="${i}">Editar ↗</button></div></div></article>`
   }).join('');
@@ -116,9 +123,9 @@ function init(){
  refreshLibrary();renderStudio();
  document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.nav)));
  el('watch-first').addEventListener('click',()=>{selectLesson(0);setPage('studio');startPlay()});
- el('go-studio').addEventListener('click',()=>setPage('studio'));
- el('new-lesson-library').addEventListener('click',createLesson);
- el('lesson-grid').addEventListener('click',e=>{const watch=e.target.closest('[data-card-watch]');const edit=e.target.closest('[data-card-edit]');if(watch){selectLesson(Number(watch.dataset.cardWatch));setPage('studio');startPlay()}else if(edit){selectLesson(Number(edit.dataset.cardEdit));setPage('studio')}});
+ el('go-studio').addEventListener('click',()=>location.assign('./studio.html'));
+ el('new-lesson-library').addEventListener('click',()=>location.assign('./studio.html?novo=1'));
+ el('lesson-grid').addEventListener('click',e=>{const watch=e.target.closest('[data-card-watch]');const edit=e.target.closest('[data-card-edit]');if(watch){selectLesson(Number(watch.dataset.cardWatch));setPage('studio');startPlay()}else if(edit){const item=project.lessons[Number(edit.dataset.cardEdit)];location.assign('./studio.html?aula='+encodeURIComponent(item.id))}});
  el('lesson-select').addEventListener('change',e=>selectLesson(Number(e.target.value)));
  el('scene-list').addEventListener('click',e=>{const btn=e.target.closest('[data-scene]');if(btn)selectScene(Number(btn.dataset.scene))});
  el('play-toggle').addEventListener('click',()=>playing?pause():startPlay());
@@ -137,3 +144,16 @@ function init(){
  if(!location.hash || !['#biblioteca','#studio','#fontes'].includes(location.hash))setPage('biblioteca');else setPage(location.hash.slice(1));
 }
 init();
+
+// The catalog also reads this browser's visual-studio projects.
+async function loadStudioCatalog() {
+  try {
+    const saved = await loadStudio();
+    if (!saved?.project?.lessons) return;
+    studioLessons = saved.project.lessons.filter(l => !l.legacyId);
+    if (!studioLessons.some(l => l.id === technicalDemo.id)) studioLessons.unshift(technicalDemo);
+    refreshLibrary();
+  } catch { /* Keep the existing catalog available if storage is disabled. */ }
+}
+loadStudioCatalog();
+window.addEventListener('pageshow', event => { if (event.persisted) loadStudioCatalog(); });
