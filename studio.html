@@ -1,14 +1,124 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Abrir Estúdio — Norma em Cena</title>
-<meta http-equiv="refresh" content="0;url=./index.html#studio">
-<script>location.replace('./index.html#studio');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1f5fb">
+  <title>Estúdio — Norma em Cena</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./estudio.css">
 </head>
-<body style="font:16px system-ui;background:#f6f8fc;color:#172a4a;padding:36px">
-<p>Redirecionando para o Estúdio de Criação…</p>
-<p><a href="./index.html#studio">Abrir o estúdio</a></p>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="./index.html"><img src="./assets/favicon.svg" alt=""><span>Norma <i>em</i> Cena<small>Estúdio de animação</small></span></a>
+    <label class="project-name"><span>Projeto</span><input id="project-name" maxlength="140" aria-label="Nome do projeto"></label>
+    <button id="viewer-close" data-action="edit-mode" hidden>Editar projeto</button>
+    <span id="save-state" class="save-state" role="status">Carregando…</span>
+    <div class="exports edit-only">
+      <button data-action="save" title="Criar versão de recuperação">Salvar versão</button>
+      <button data-action="html">Baixar HTML</button>
+      <button data-action="print">Imprimir / PDF</button>
+      <button class="primary" data-action="mp4">Exportar MP4</button>
+      <details class="export-more">
+        <summary>Mais</summary>
+        <div class="export-pop">
+          <button data-action="json">Salvar projeto editável</button>
+          <button data-action="import">Importar projeto JSON</button>
+          <button data-action="png">Capturar cena PNG</button>
+          <button data-action="srt">Exportar legendas SRT</button>
+          <button data-action="versions">Histórico de versões</button>
+          <button data-action="conversion">Conversão de vídeo</button>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main id="workspace" class="workspace" aria-busy="true">
+    <aside class="shelf edit-only" aria-label="Biblioteca de produção">
+      <div class="side-section">
+        <label class="control-label" for="lesson-select">Treinamento</label>
+        <select id="lesson-select"></select>
+        <div class="row wrap minor-actions">
+          <button data-action="new-lesson">Novo</button><button data-action="lesson-info">Detalhes</button>
+          <button data-action="dup-lesson">Duplicar</button><button data-action="del-lesson">Excluir</button>
+        </div>
+      </div>
+      <div class="side-section library-tabs" role="group" aria-label="Tipo de biblioteca">
+        <button data-action="tab" data-value="scenes" aria-pressed="true">Cenas</button>
+        <button data-action="tab" data-value="assets" aria-pressed="false">Recursos</button>
+      </div>
+      <section id="scenes-tab" class="shelf-content" aria-label="Cenas">
+        <div id="scenes"></div>
+        <div class="shelf-actions">
+          <button data-action="new-scene" class="soft">＋ Nova cena</button>
+          <button data-action="templates">Modelos</button>
+        </div>
+      </section>
+      <section id="assets-tab" class="shelf-content" aria-label="Recursos" hidden>
+        <input type="search" id="asset-search" placeholder="Buscar equipamento, forma…" aria-label="Buscar recursos">
+        <div id="assets"></div>
+      </section>
+    </aside>
+
+    <section class="stage-panel" aria-label="Visualizador">
+      <div class="stage-head">
+        <div><p id="stage-meta" class="meta"></p><h1 id="stage-title">Estúdio</h1></div>
+        <div class="row wrap edit-only">
+          <button data-action="undo" title="Desfazer (Ctrl+Z)" aria-label="Desfazer">↶</button>
+          <button data-action="redo" title="Refazer (Ctrl+Shift+Z)" aria-label="Refazer">↷</button>
+          <button data-action="insert">＋ Inserir</button>
+          <button data-action="viewer">Assistir aula</button>
+        </div>
+      </div>
+      <div id="theater" class="theater">
+        <div class="canvas-frame"><canvas id="stage" width="1280" height="720" aria-label="Cena para edição visual" tabindex="0"></canvas></div>
+        <div class="transport">
+          <button data-action="previous" aria-label="Cena anterior" title="Cena anterior">⏮&#xFE0E;</button>
+          <button id="play" data-action="play" class="primary" aria-label="Reproduzir" title="Reproduzir (Espaço)">▶&#xFE0E;</button>
+          <button data-action="next" aria-label="Próxima cena" title="Próxima cena">⏭&#xFE0E;</button>
+          <output id="clock">0:00 / 0:00</output>
+          <input id="seek" type="range" min="0" value="0" step=".01" aria-label="Posição da reprodução">
+          <button data-action="caption" aria-label="Mostrar legendas" title="Legendas" aria-pressed="true">CC</button>
+          <button data-action="fullscreen" title="Tela cheia" aria-label="Tela cheia">⛶</button>
+        </div>
+      </div>
+      <div id="present-scenes" class="present-scenes" hidden></div>
+      <div class="canvas-tools edit-only">
+        <div class="row wrap">
+          <label><input id="snap" type="checkbox" checked> Encaixe</label>
+          <label><input id="guides" type="checkbox" checked> Guias</label>
+          <button data-action="camera">Câmera</button>
+        </div>
+        <span id="stage-help">Arraste para mover. Use as alças para redimensionar.</span>
+      </div>
+    </section>
+
+    <aside class="inspector edit-only" aria-label="Propriedades">
+      <div class="inspector-tabs" role="group" aria-label="Tipo de propriedade">
+        <button data-action="inspector" data-value="scene" aria-pressed="false">Cena</button>
+        <button data-action="inspector" data-value="object" aria-pressed="true">Objeto</button>
+        <button data-action="inspector" data-value="sound" aria-pressed="false">Áudio / CC</button>
+      </div>
+      <div id="properties" class="properties"></div>
+    </aside>
+
+    <section class="timeline edit-only" aria-label="Linha do tempo">
+      <div class="timeline-bar">
+        <div><h2>Linha do tempo</h2><span id="timeline-context"></span></div>
+        <div class="row wrap">
+          <button data-action="key">＋ Keyframe</button><button data-action="motion">Animações</button>
+          <button data-action="zoom-out" aria-label="Afastar linha do tempo">−</button>
+          <button data-action="zoom-in" aria-label="Aproximar linha do tempo">＋</button>
+        </div>
+      </div>
+      <div id="timeline-scroll" class="timeline-scroll"><div id="tracks"></div></div>
+    </section>
+  </main>
+
+  <dialog id="dialog"><div id="dialog-inner"></div></dialog>
+  <div id="notice" class="notice" role="status" hidden></div>
+  <input id="picker" type="file" hidden>
+  <noscript>Ative o JavaScript para usar o estúdio.</noscript>
+  <script type="module" src="./js/estudio/editor.js"></script>
 </body>
 </html>
