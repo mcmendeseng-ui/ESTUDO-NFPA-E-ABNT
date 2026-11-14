@@ -29,6 +29,7 @@ export function validateProject(input) {
           points:Array.isArray(s.points)?s.points.slice(0,4).map(p=>String(p).slice(0,140)):[],
           kind:['intro','compare','steps','concept','summary','image'].includes(s.kind)?s.kind:'concept',
           motion:['walk','point','inspect','wave','explain','idle'].includes(s.motion)?s.motion:'explain',
+          cues:Array.isArray(s.cues)?s.cues.slice(0,12).filter(c=>c&&Number.isFinite(Number(c.time))&&['walk','point','inspect','wave','explain','idle'].includes(c.motion)).map(c=>({id:String(c.id||makeId()).slice(0,80),time:Math.max(0,Math.min(180,Number(c.time))),motion:c.motion})):[],
           duration:Math.max(3,Math.min(180,Number(s.duration)||12)),
           leftLabel:String(s.leftLabel||'NFPA').slice(0,40),rightLabel:String(s.rightLabel||'ABNT NBR').slice(0,40),
           leftText:String(s.leftText||'').slice(0,200),rightText:String(s.rightText||'').slice(0,200),
