@@ -46,3 +46,15 @@ O navegador precisa de rede para carregar a fonte Google; se estiver offline, ex
 ### Segurança das fontes
 
 O site nunca deve incluir PDFs completos das normas, sessões autenticadas NFPA/ABNT ou conteúdo de acesso restrito. Guarde documentos oficiais nas respectivas plataformas e informe apenas referência, edição, seção e explicação autoral. Nenhuma conclusão normativa pode ser gerada apenas por uma referência genérica.
+
+
+## Evolução do estúdio — coreografia editável (v0.2)
+
+O estúdio ganhou um **motor de movimento por tempo de cena** em `js/choreography.js`. O personagem ilustrado utiliza articulações de ombros, cotovelos, quadris, joelhos e cabeça. As marcas de gesto podem ser criadas, alteradas e removidas em **Estúdio → Propriedades → Coreografia da cena**.
+
+- Use **Sugerir coreografia** para criar três ações; ajuste os segundos e gestos.
+- Mova a linha do tempo para verificar a pose no instante escolhido; as marcas ficam visíveis sobre a barra de progresso.
+- O resultado é salvo no navegador e incluído em **Salvar cópia (.json)**, para preservação do trabalho.
+- O mesmo roteiro introdutório recuperado permanece disponível, sem inventar requisitos NFPA/ABNT.
+
+**Limites atuais:** animação vetorial interativa no navegador, sem renderização MP4 concluída; narração depende do navegador/dispositivo e não é exportada com áudio. O conteúdo específico das normas ainda exige consulta à edição oficial e revisão técnica antes de ser publicado como aula.
