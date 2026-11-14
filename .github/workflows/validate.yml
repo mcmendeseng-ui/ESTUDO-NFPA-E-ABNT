@@ -1,0 +1,19 @@
+name: Verificação do site
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Conferir sintaxe JavaScript
+        run: |
+          for file in js/*.js; do node --check "$file"; done
+      - name: Testar motor de animação
+        run: node --test tests/*.test.mjs
