@@ -1,6 +1,7 @@
 import {DEFAULT_PROJECT,newScene,newLesson,timeLabel,lessonDuration,locateScene,clamp,makeId} from './data.js';
 import {loadProject,saveProject,exportProject,readProject} from './storage.js';
 import {renderStage,escapeHtml as esc} from './motion.js';
+import {directStage,exampleCues,MOTION_LABELS} from './choreography.js';
 
 let project=loadProject();
 let lessonIndex=0,sceneIndex=0,playhead=0,playing=false,narrate=false,lastFrame=0;
@@ -27,19 +28,64 @@ function renderSceneList(){
 function renderStageNow(){const pos=locateScene(lesson(),playhead);if(pos.index!==sceneIndex){sceneIndex=pos.index;renderSceneList();renderEditor();}
  el('player-stage').innerHTML=renderStage(pos.scene,pos.index,lesson().scenes.length);
  el('preview-foot-scene').textContent=`Cena ${pos.index+1} / ${lesson().scenes.length}`;
- updatePlayerClock();
+ updatePlayerClock();syncMotion();
 }
 function updatePlayerClock(){
   const dur=lessonDuration(lesson());el('time-code').textContent=`${timeLabel(playhead)} / ${timeLabel(dur)}`;
   const range=el('timeline');range.max=dur;range.value=clamp(playhead,0,dur);
   el('play-toggle').textContent=playing?'❚❚':'▶';el('play-toggle').setAttribute('aria-label',playing?'Pausar':'Reproduzir');
-  el('narrate-toggle').classList.toggle('is-on',narrate);
+  el('narrate-toggle').classList.toggle('is-on',narrate);updateCueMarks();
 }
 function renderEditor(){
  const s=scene();
  const field=(label,key,val,opts={})=>`<label class="form-field"><span>${label}</span>${opts.select?`<select class="form-input" data-key="${key}">${opts.select.map(([v,l])=>`<option value="${v}" ${val===v?'selected':''}>${l}</option>`).join('')}</select>`:opts.area?`<textarea class="form-input" data-key="${key}" rows="${opts.rows||3}" maxlength="${opts.max||2400}">${esc(val)}</textarea>`:`<input class="form-input" type="${opts.number?'number':'text'}" data-key="${key}" value="${esc(val)}" ${opts.number?'min="3" max="180" step="1"':''} maxlength="${opts.max||260}"/>`}</label>`;
  const statusSelect=`<label class="form-field"><span>Status da aula (não equivale a validação automática)</span><select class="form-input" id="lesson-status"><option value="authorial" ${lesson().status==='authorial'?'selected':''}>Conteúdo autoral</option><option value="draft" ${lesson().status==='draft'?'selected':''}>Rascunho sem revisão</option><option value="reviewed" ${lesson().status==='reviewed'?'selected':''}>Revisado manualmente</option></select></label>`;
  el('editor-fields').innerHTML=`${statusSelect}${field('Título da aula','lesson:title',lesson().title,{max:110})}${field('Título da cena','title',s.title,{max:110})}${field('Texto de apoio','body',s.body,{area:true,rows:2,max:260})}<div class="field-row">${field('Tipo de cena','kind',s.kind,{select:[['intro','Introdução'],['compare','Comparativo'],['steps','Etapas'],['concept','Conceito'],['summary','Resumo'],['image','Imagem']]})}${field('Duração (s)','duration',s.duration,{number:true})}</div><div class="field-row">${field('Movimento do personagem','motion',s.motion,{select:[['explain','Explicar'],['point','Apontar'],['walk','Caminhar'],['inspect','Inspecionar'],['wave','Acenar'],['idle','Parado']]})}${field('Etiqueta da cena','eyebrow',s.eyebrow,{max:70})}</div>${field('Pontos-chave (uma linha por item)','points',s.points.join('\n'),{area:true,rows:4,max:600})}${field('Narração','narration',s.narration,{area:true,rows:6,max:2400})}<p class="form-caption">A voz depende das vozes instaladas no aparelho. A narração automática não garante a voz Francisca.</p><div class="form-divider"></div>${field('Referência: documento, edição e seção','reference',s.reference,{max:220})}${s.kind==='compare'?`${field('Etiqueta esquerda','leftLabel',s.leftLabel,{max:40})}${field('Explicação esquerda','leftText',s.leftText,{area:true,rows:3,max:200})}${field('Etiqueta direita','rightLabel',s.rightLabel,{max:40})}${field('Explicação direita','rightText',s.rightText,{area:true,rows:3,max:200})}`:''}<div class="form-divider"></div><div class="field-row"><button type="button" class="button button--subtle button--small" id="scene-up" ${sceneIndex===0?'disabled':''}>↑ Subir cena</button><button type="button" class="button button--subtle button--small" id="scene-down" ${sceneIndex===lesson().scenes.length-1?'disabled':''}>↓ Descer cena</button></div>`;
+ renderCuePanel();
+}
+function renderCuePanel(){
+  const s=scene(), root=el('editor-fields');
+  const container=document.createElement('div');
+  container.className='cue-panel';
+  container.innerHTML=`<h4>Coreografia da cena</h4><p>Escolha os movimentos e seus segundos. Arraste a linha do tempo para conferir as poses.</p>
+  ${(Array.isArray(s.cues)?s.cues:[]).map((c,i)=>`<div class="cue-row"><input type="number" min="0" step="0.1" max="${s.duration}" value="${Number(c.time)||0}" data-cue-time="${i}" aria-label="Tempo da marca ${i+1}"><select data-cue-motion="${i}" aria-label="Movimento da marca ${i+1}">${Object.entries(MOTION_LABELS).map(([key,label])=>`<option value="${key}" ${c.motion===key?'selected':''}>${label}</option>`).join('')}</select><button type="button" class="cue-delete" data-cue-remove="${i}" aria-label="Excluir marca ${i+1}">×</button></div>`).join('')}
+  <div class="cue-buttons"><button type="button" class="button button--subtle" id="cue-add">＋ Inserir marca</button><button type="button" class="button button--subtle" id="cue-auto">✦ Sugerir coreografia</button></div>`;
+  root.append(container);
+  container.addEventListener('change',event=>{
+    const n=event.target;
+    if(n.dataset.cueTime!==undefined){
+      const cue=s.cues[Number(n.dataset.cueTime)];
+      if(cue)cue.time=Math.round(clamp(n.value,0,s.duration)*10)/10;
+    }else if(n.dataset.cueMotion!==undefined){
+      const cue=s.cues[Number(n.dataset.cueMotion)];
+      if(cue&&Object.hasOwn(MOTION_LABELS,n.value))cue.motion=n.value;
+    }
+    persist();updatePlayerClock();syncMotion();
+  });
+  container.addEventListener('click',event=>{
+    const btn=event.target.closest('button');if(!btn)return;
+    if(btn.dataset.cueRemove!==undefined){
+      s.cues.splice(Number(btn.dataset.cueRemove),1);
+    }else if(btn.id==='cue-auto'){
+      s.cues=exampleCues(s);
+    }else if(btn.id==='cue-add'){
+      s.cues=Array.isArray(s.cues)?s.cues:[];
+      if(s.cues.length>=12){toast('Limite de 12 marcas por cena.');return;}
+      const start=lesson().scenes.slice(0,sceneIndex).reduce((a,x)=>a+Number(x.duration||0),0);
+      s.cues.push({id:makeId(),time:Math.round(clamp(playhead-start,0,s.duration)*10)/10,motion:s.motion||'explain'});
+    }else return;
+    persist();renderEditor();updatePlayerClock();syncMotion();
+  });
+}
+function updateCueMarks(){
+ const marks=el('cue-dots');if(!marks)return;
+ const total=Math.max(1,lessonDuration(lesson()));
+ const offset=lesson().scenes.slice(0,sceneIndex).reduce((a,x)=>a+Number(x.duration||0),0);
+ marks.innerHTML=(Array.isArray(scene().cues)?scene().cues:[]).map(c=>`<span class="cue-mark" style="left:${(100*(offset+clamp(c.time,0,scene().duration))/total).toFixed(3)}%"></span>`).join('');
+}
+function syncMotion(){
+ const position=locateScene(lesson(),playhead);
+ directStage(el('player-stage'),position.scene,position.local);
 }
 function renderStudio(){renderLessonOptions();renderSceneList();renderStageNow();renderEditor();const chip=el('status-chip');chip.textContent=statusText(lesson().status);chip.className='status-chip status-chip--'+lesson().status;}
 function stopSpeech(){if('speechSynthesis' in window)window.speechSynthesis.cancel();if(audioPlayer){audioPlayer.pause();audioPlayer=null;}}
@@ -51,7 +97,7 @@ function startPlay(){if(playing)return;playing=true;lastFrame=performance.now();
 function pause(){playing=false;stopSpeech();updatePlayerClock()}
 function tick(t){if(!playing)return;const delta=Math.min(.2,(t-lastFrame)/1000);lastFrame=t;const prev=sceneIndex;playhead=Math.min(lessonDuration(lesson()),playhead+Math.max(0,delta));const next=locateScene(lesson(),playhead).index;if(next!==prev){sceneIndex=next;renderSceneList();renderEditor();renderStageNow();startNarration()}
  if(playhead>=lessonDuration(lesson())){pause();toast('Fim da aula.');return;}
- updatePlayerClock();requestAnimationFrame(tick)
+ updatePlayerClock();syncMotion();requestAnimationFrame(tick)
 }
 function selectScene(i){pause();sceneIndex=clamp(i,0,lesson().scenes.length-1);playhead=lesson().scenes.slice(0,sceneIndex).reduce((a,s)=>a+s.duration,0);renderSceneList();renderStageNow();renderEditor()}
 function selectLesson(i){pause();lessonIndex=clamp(i,0,project.lessons.length-1);sceneIndex=0;playhead=0;renderStudio()}
