@@ -1,5 +1,8 @@
 # Norma em Cena — recuperação reconstruída para GitHub Pages
 
+> **Atenção: o repositório GitHub não é o site.** O estúdio está no código, mas só aparece no navegador depois de habilitar o **GitHub Pages**. A publicação automática falhou porque o GitHub recusou a criação do Pages pela integração. A proprietária da conta deve abrir [Settings → Pages](https://github.com/mcmendeseng-ui/ESTUDO-NFPA-E-ABNT/settings/pages), escolher **Build and deployment → Source: GitHub Actions** e salvar. Depois, executar o workflow **Publicar Norma em Cena no GitHub Pages** em **Actions → Run workflow**. O endereço do estúdio, quando publicado, será [Abrir estúdio](https://mcmendeseng-ui.github.io/ESTUDO-NFPA-E-ABNT/studio.html). 
+
+
 **Situação:** reconstrução nova a partir de um pacote de recuperação parcial de 14/11/2026. Não é a interface original que se perdeu. Não contém normas consultadas nem treinamentos técnicos verificados.
 
 ## O que funciona nesta versão
