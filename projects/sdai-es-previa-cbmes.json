@@ -1,0 +1,1028 @@
+{
+  "format": "norma-em-cena-estudio",
+  "version": 3,
+  "name": "SDAI ES — prévia CBMES",
+  "lessons": [
+    {
+      "id": "sdai-es-previa-cbmes",
+      "title": "Onde instalar o acionador manual?",
+      "module": "SDAI no Espírito Santo",
+      "description": "Prévia didática de 18 segundos, em 16:9. Montagem e percurso segundo o item 5.9 da NT 17/2013 do CBMES. Consulta da ABNT e da NFPA ainda pendente.",
+      "status": "Prévia CBMES",
+      "category": "SDAI",
+      "scenes": [
+        {
+          "id": "sdai-es-montagem",
+          "title": "Posição do acionador no térreo",
+          "chapter": "SDAI no Espírito Santo",
+          "duration": 8,
+          "background": "#F4F8FF",
+          "style": "plain",
+          "transition": "cut",
+          "reference": "CBMES • NT 17/2013 • item 5.9 • https://cb.es.gov.br/legislacoes-em-vigor",
+          "text": "Montagem esquemática de um dispositivo próximo à entrada no térreo. A regra estadual também trata da localização próxima às escadas nos demais pavimentos.",
+          "narration": "No Espírito Santo, o Corpo de Bombeiros estabelece que, no térreo, o acionador manual fique próximo à entrada. Aqui, ele é montado na parede ao lado do acesso.",
+          "layers": [
+            {
+              "id": "obj-36",
+              "type": "rect",
+              "name": "Faixa de identificação",
+              "x": 177,
+              "y": 74,
+              "w": 230,
+              "h": 36,
+              "fill": "#DDEAFF"
+            },
+            {
+              "id": "obj-37",
+              "type": "text",
+              "name": "SDAI   /   ESPÍRITO SANTO",
+              "x": 178,
+              "y": 87,
+              "w": 209,
+              "h": 41.6,
+              "fill": "#214BD2",
+              "text": "SDAI   /   ESPÍRITO SANTO",
+              "font": 16,
+              "bold": true
+            },
+            {
+              "id": "obj-38",
+              "type": "text",
+              "name": "LOCALIZAÇÃO",
+              "x": 280,
+              "y": 155,
+              "w": 434,
+              "h": 52,
+              "fill": "#176D86",
+              "text": "LOCALIZAÇÃO",
+              "font": 20,
+              "bold": true
+            },
+            {
+              "id": "obj-39",
+              "type": "text",
+              "name": "Onde instalar o acionador manual?",
+              "x": 286,
+              "y": 239,
+              "w": 446,
+              "h": 119.60000000000001,
+              "fill": "#142444",
+              "text": "Onde instalar o acionador manual?",
+              "font": 46,
+              "bold": true
+            },
+            {
+              "id": "obj-40",
+              "type": "text",
+              "name": "No térreo, posicione o acionador próximo à entrada.",
+              "x": 286,
+              "y": 411,
+              "w": 446,
+              "h": 70.2,
+              "fill": "#476181",
+              "text": "No térreo, posicione o acionador próximo à entrada.",
+              "font": 27,
+              "bold": false
+            },
+            {
+              "id": "obj-41",
+              "type": "rect",
+              "name": "Linha do rodapé",
+              "x": 640,
+              "y": 647,
+              "w": 1150,
+              "h": 2,
+              "fill": "#91A8C2"
+            },
+            {
+              "id": "obj-42",
+              "type": "text",
+              "name": "NORMA EM CENA",
+              "x": 195,
+              "y": 680,
+              "w": 262,
+              "h": 44.2,
+              "fill": "#214BD2",
+              "text": "NORMA EM CENA",
+              "font": 17,
+              "bold": true
+            },
+            {
+              "id": "obj-43",
+              "type": "text",
+              "name": "CBMES  ·  NT 17/2013  ·  5.9",
+              "x": 868,
+              "y": 680,
+              "w": 450,
+              "h": 44.2,
+              "fill": "#476181",
+              "text": "CBMES  ·  NT 17/2013  ·  5.9",
+              "font": 17,
+              "bold": true,
+              "align": "right"
+            },
+            {
+              "id": "obj-44",
+              "type": "text",
+              "name": "PRÉVIA",
+              "x": 1160,
+              "y": 680,
+              "w": 110,
+              "h": 41.6,
+              "fill": "#C65017",
+              "text": "PRÉVIA",
+              "font": 16,
+              "bold": true,
+              "align": "right"
+            },
+            {
+              "id": "obj-1",
+              "type": "rect",
+              "name": "Fundo da ilustração",
+              "x": 890,
+              "y": 354,
+              "w": 654,
+              "h": 530,
+              "fill": "#DDEAFF"
+            },
+            {
+              "id": "obj-2",
+              "type": "rect",
+              "name": "Parede",
+              "x": 883,
+              "y": 319,
+              "w": 552,
+              "h": 394,
+              "fill": "#FCFDFF",
+              "border": 3,
+              "stroke": "#B6C8DC"
+            },
+            {
+              "id": "obj-3",
+              "type": "rect",
+              "name": "Piso",
+              "x": 884,
+              "y": 537,
+              "w": 551,
+              "h": 42,
+              "fill": "#C7D7EA"
+            },
+            {
+              "id": "obj-4",
+              "type": "line",
+              "name": "Junta do piso acabado",
+              "x": 883,
+              "y": 516,
+              "w": 550,
+              "h": 7,
+              "fill": "#8FAAC6"
+            },
+            {
+              "id": "obj-5",
+              "type": "rect",
+              "name": "Batente",
+              "x": 1026,
+              "y": 359,
+              "w": 158,
+              "h": 311,
+              "fill": "#708CB1"
+            },
+            {
+              "id": "obj-6",
+              "type": "rect",
+              "name": "Vão de entrada",
+              "x": 1026,
+              "y": 368,
+              "w": 134,
+              "h": 292,
+              "fill": "#E1ECFC"
+            },
+            {
+              "id": "obj-7",
+              "type": "rect",
+              "name": "Folha da porta",
+              "x": 1034,
+              "y": 371,
+              "w": 99,
+              "h": 282,
+              "fill": "#BACDEA"
+            },
+            {
+              "id": "obj-8",
+              "type": "ellipse",
+              "name": "Maçaneta",
+              "x": 1072,
+              "y": 382,
+              "w": 10,
+              "h": 10,
+              "fill": "#3B597F"
+            },
+            {
+              "id": "obj-9",
+              "type": "text",
+              "name": "ENTRADA  /  TÉRREO",
+              "x": 1031,
+              "y": 189,
+              "w": 205,
+              "h": 41.6,
+              "fill": "#476181",
+              "text": "ENTRADA  /  TÉRREO",
+              "font": 16,
+              "bold": true,
+              "align": "center"
+            },
+            {
+              "id": "obj-10",
+              "type": "rect",
+              "name": "Base do acionador",
+              "x": 815,
+              "y": 366,
+              "w": 97,
+              "h": 120,
+              "fill": "#8B2336",
+              "start": 1.1,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 1.1,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 1.55,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "shadow": 6
+            },
+            {
+              "id": "obj-11",
+              "type": "ellipse",
+              "name": "Fixação superior",
+              "x": 815,
+              "y": 327,
+              "w": 7,
+              "h": 7,
+              "fill": "#D3E0E8",
+              "start": 1.3,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 1.3,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 1.55,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-12",
+              "type": "ellipse",
+              "name": "Fixação inferior",
+              "x": 815,
+              "y": 406,
+              "w": 7,
+              "h": 7,
+              "fill": "#D3E0E8",
+              "start": 1.4,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 1.4,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 1.65,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-13",
+              "type": "rect",
+              "name": "Invólucro frontal",
+              "x": 815,
+              "y": 362,
+              "w": 88,
+              "h": 105,
+              "fill": "#BC243A",
+              "start": 1.8,
+              "keys": {
+                "x": [
+                  {
+                    "t": 1.8,
+                    "v": 950,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 3.4,
+                    "v": 815,
+                    "ease": "out"
+                  }
+                ],
+                "opacity": [
+                  {
+                    "t": 1.8,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.0300000000000002,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "shadow": 8
+            },
+            {
+              "id": "obj-14",
+              "type": "rect",
+              "name": "Visor do acionador",
+              "x": 815,
+              "y": 370,
+              "w": 60,
+              "h": 43,
+              "fill": "#F8D6D4",
+              "start": 1.8,
+              "keys": {
+                "x": [
+                  {
+                    "t": 1.8,
+                    "v": 950,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 3.4,
+                    "v": 815,
+                    "ease": "out"
+                  }
+                ],
+                "opacity": [
+                  {
+                    "t": 1.8,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.0300000000000002,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-15",
+              "type": "rect",
+              "name": "Elemento de acionamento ilustrativo",
+              "x": 815,
+              "y": 371,
+              "w": 29,
+              "h": 14,
+              "fill": "#9B2038",
+              "start": 1.8,
+              "keys": {
+                "x": [
+                  {
+                    "t": 1.8,
+                    "v": 950,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 3.4,
+                    "v": 815,
+                    "ease": "out"
+                  }
+                ],
+                "opacity": [
+                  {
+                    "t": 1.8,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.0300000000000002,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-16",
+              "type": "text",
+              "name": "ACIONADOR",
+              "x": 815,
+              "y": 340,
+              "w": 79,
+              "h": 26,
+              "fill": "#FFFFFF",
+              "text": "ACIONADOR",
+              "font": 10,
+              "bold": true,
+              "start": 1.8,
+              "keys": {
+                "x": [
+                  {
+                    "t": 1.8,
+                    "v": 950,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 3.4,
+                    "v": 815,
+                    "ease": "out"
+                  }
+                ],
+                "opacity": [
+                  {
+                    "t": 1.8,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.0300000000000002,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "align": "center"
+            },
+            {
+              "id": "obj-17",
+              "type": "line",
+              "name": "Chamada do equipamento",
+              "x": 738,
+              "y": 368,
+              "w": 54,
+              "h": 7,
+              "fill": "#BC243A",
+              "start": 3.4,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 3.4,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 3.95,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-18",
+              "type": "text",
+              "name": "Acionador",
+              "x": 708,
+              "y": 422,
+              "w": 145,
+              "h": 41.6,
+              "fill": "#BC243A",
+              "text": "Acionador",
+              "font": 16,
+              "bold": true,
+              "start": 3.5,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 3.5,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 4,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "align": "center"
+            }
+          ]
+        },
+        {
+          "id": "sdai-es-percurso",
+          "title": "Percurso até o acionador",
+          "chapter": "SDAI no Espírito Santo",
+          "duration": 10,
+          "background": "#F4F8FF",
+          "style": "plain",
+          "transition": "cut",
+          "reference": "CBMES • NT 17/2013 • item 5.9 • https://cb.es.gov.br/legislacoes-em-vigor",
+          "text": "O limite estadual do percurso de qualquer ponto da área protegida até o acionador mais próximo é 30 m. A planta é esquemática, sem escala.",
+          "narration": "Na planta, siga o caminho que a pessoa consegue percorrer. Segundo o item cinco ponto nove, do ponto protegido ao acionador mais próximo, o percurso tem limite de trinta metros.",
+          "layers": [
+            {
+              "id": "obj-45",
+              "type": "rect",
+              "name": "Faixa de identificação",
+              "x": 177,
+              "y": 74,
+              "w": 230,
+              "h": 36,
+              "fill": "#DDEAFF"
+            },
+            {
+              "id": "obj-46",
+              "type": "text",
+              "name": "SDAI   /   ESPÍRITO SANTO",
+              "x": 178,
+              "y": 87,
+              "w": 209,
+              "h": 41.6,
+              "fill": "#214BD2",
+              "text": "SDAI   /   ESPÍRITO SANTO",
+              "font": 16,
+              "bold": true
+            },
+            {
+              "id": "obj-47",
+              "type": "text",
+              "name": "PERCURSO",
+              "x": 280,
+              "y": 155,
+              "w": 434,
+              "h": 52,
+              "fill": "#176D86",
+              "text": "PERCURSO",
+              "font": 20,
+              "bold": true
+            },
+            {
+              "id": "obj-48",
+              "type": "text",
+              "name": "Meça pelo caminho percorrido",
+              "x": 286,
+              "y": 239,
+              "w": 446,
+              "h": 119.60000000000001,
+              "fill": "#142444",
+              "text": "Meça pelo caminho percorrido",
+              "font": 46,
+              "bold": true
+            },
+            {
+              "id": "obj-49",
+              "type": "text",
+              "name": "Da área protegida até o acionador manual mais próximo.",
+              "x": 286,
+              "y": 411,
+              "w": 446,
+              "h": 70.2,
+              "fill": "#476181",
+              "text": "Da área protegida até o acionador manual mais próximo.",
+              "font": 27,
+              "bold": false
+            },
+            {
+              "id": "obj-50",
+              "type": "rect",
+              "name": "Linha do rodapé",
+              "x": 640,
+              "y": 647,
+              "w": 1150,
+              "h": 2,
+              "fill": "#91A8C2"
+            },
+            {
+              "id": "obj-51",
+              "type": "text",
+              "name": "NORMA EM CENA",
+              "x": 195,
+              "y": 680,
+              "w": 262,
+              "h": 44.2,
+              "fill": "#214BD2",
+              "text": "NORMA EM CENA",
+              "font": 17,
+              "bold": true
+            },
+            {
+              "id": "obj-52",
+              "type": "text",
+              "name": "CBMES  ·  NT 17/2013  ·  5.9",
+              "x": 868,
+              "y": 680,
+              "w": 450,
+              "h": 44.2,
+              "fill": "#476181",
+              "text": "CBMES  ·  NT 17/2013  ·  5.9",
+              "font": 17,
+              "bold": true,
+              "align": "right"
+            },
+            {
+              "id": "obj-53",
+              "type": "text",
+              "name": "PRÉVIA",
+              "x": 1160,
+              "y": 680,
+              "w": 110,
+              "h": 41.6,
+              "fill": "#C65017",
+              "text": "PRÉVIA",
+              "font": 16,
+              "bold": true,
+              "align": "right"
+            },
+            {
+              "id": "obj-19",
+              "type": "rect",
+              "name": "Área do desenho",
+              "x": 890,
+              "y": 354,
+              "w": 654,
+              "h": 530,
+              "fill": "#DDEAFF"
+            },
+            {
+              "id": "obj-20",
+              "type": "rect",
+              "name": "Área protegida em planta",
+              "x": 888,
+              "y": 340,
+              "w": 526,
+              "h": 344,
+              "fill": "#FBFDFF",
+              "stroke": "#7894B2",
+              "border": 4
+            },
+            {
+              "id": "obj-21",
+              "type": "rect",
+              "name": "Parede interna",
+              "x": 881,
+              "y": 289,
+              "w": 12,
+              "h": 236,
+              "fill": "#7894B2"
+            },
+            {
+              "id": "obj-22",
+              "type": "rect",
+              "name": "Parede interna transversal",
+              "x": 692,
+              "y": 376,
+              "w": 130,
+              "h": 12,
+              "fill": "#7894B2"
+            },
+            {
+              "id": "obj-23",
+              "type": "rect",
+              "name": "Faixa de passagem da entrada",
+              "x": 1150,
+              "y": 245,
+              "w": 12,
+              "h": 73,
+              "fill": "#F6F9FF"
+            },
+            {
+              "id": "obj-24",
+              "type": "line",
+              "name": "Folha da porta em planta",
+              "x": 1121,
+              "y": 242,
+              "w": 65,
+              "h": 7,
+              "fill": "#91A8C2",
+              "rotation": -47
+            },
+            {
+              "id": "obj-25",
+              "type": "rect",
+              "name": "Acionador em planta",
+              "x": 1127,
+              "y": 303,
+              "w": 25,
+              "h": 32,
+              "fill": "#BC243A",
+              "shadow": 5
+            },
+            {
+              "id": "obj-26",
+              "type": "text",
+              "name": "ENTRADA",
+              "x": 1071,
+              "y": 199,
+              "w": 135,
+              "h": 39,
+              "fill": "#476181",
+              "text": "ENTRADA",
+              "font": 15,
+              "bold": true,
+              "align": "center"
+            },
+            {
+              "id": "obj-27",
+              "type": "ellipse",
+              "name": "Ponto de partida",
+              "x": 723,
+              "y": 238,
+              "w": 19,
+              "h": 19,
+              "fill": "#214BD2"
+            },
+            {
+              "id": "obj-28",
+              "type": "line",
+              "name": "Percurso do ponto até o corredor",
+              "x": 757.5,
+              "y": 238,
+              "w": 69,
+              "h": 7,
+              "fill": "#176D86",
+              "start": 1.5,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 1.5,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 1.82,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-29",
+              "type": "line",
+              "name": "Percurso ao redor da parede",
+              "x": 792,
+              "y": 293,
+              "w": 110,
+              "h": 7,
+              "fill": "#176D86",
+              "start": 1.82,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 1.82,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.13,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "rotation": 90
+            },
+            {
+              "id": "obj-30",
+              "type": "line",
+              "name": "Percurso por baixo da divisória",
+              "x": 792,
+              "y": 386,
+              "w": 185,
+              "h": 7,
+              "fill": "#176D86",
+              "start": 2.13,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 2.13,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.48,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "rotation": 90
+            },
+            {
+              "id": "obj-31",
+              "type": "line",
+              "name": "Percurso na circulação",
+              "x": 949,
+              "y": 478,
+              "w": 314,
+              "h": 7,
+              "fill": "#176D86",
+              "start": 2.48,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 2.48,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 2.92,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-32",
+              "type": "arrow",
+              "name": "Trecho até o acionador",
+              "x": 1106,
+              "y": 394,
+              "w": 170,
+              "h": 14,
+              "fill": "#176D86",
+              "start": 2.92,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 2.92,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 3.5,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              },
+              "rotation": -90
+            },
+            {
+              "id": "obj-33",
+              "type": "ellipse",
+              "name": "Marcador animado do percurso",
+              "x": 723,
+              "y": 238,
+              "w": 17,
+              "h": 17,
+              "fill": "#E88029",
+              "start": 1.55,
+              "end": 4.5,
+              "keys": {
+                "x": [
+                  {
+                    "t": 1.55,
+                    "v": 723,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 1.95,
+                    "v": 792,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 2.8,
+                    "v": 792,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 3.65,
+                    "v": 1106,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 4.45,
+                    "v": 1106,
+                    "ease": "linear"
+                  }
+                ],
+                "y": [
+                  {
+                    "t": 1.55,
+                    "v": 238,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 1.95,
+                    "v": 238,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 2.8,
+                    "v": 478,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 3.65,
+                    "v": 478,
+                    "ease": "linear"
+                  },
+                  {
+                    "t": 4.45,
+                    "v": 309,
+                    "ease": "linear"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-34",
+              "type": "text",
+              "name": "Ponto da área protegida",
+              "x": 775,
+              "y": 211,
+              "w": 168,
+              "h": 33.800000000000004,
+              "fill": "#476181",
+              "text": "Ponto da área protegida",
+              "font": 13,
+              "bold": true,
+              "align": "center"
+            },
+            {
+              "id": "obj-35",
+              "type": "text",
+              "name": "Planta ilustrativa sem escala",
+              "x": 890,
+              "y": 565,
+              "w": 374,
+              "h": 46.800000000000004,
+              "fill": "#476181",
+              "text": "Planta ilustrativa sem escala",
+              "font": 18,
+              "bold": true,
+              "align": "center"
+            },
+            {
+              "id": "obj-54",
+              "type": "text",
+              "name": "30 m",
+              "x": 300,
+              "y": 558,
+              "w": 467,
+              "h": 169,
+              "fill": "#214BD2",
+              "text": "30 m",
+              "font": 65,
+              "bold": true,
+              "start": 4.35,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 4.35,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 4.8,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "obj-55",
+              "type": "text",
+              "name": "LIMITE DE PERCURSO",
+              "x": 300,
+              "y": 607,
+              "w": 467,
+              "h": 44.2,
+              "fill": "#476181",
+              "text": "LIMITE DE PERCURSO",
+              "font": 17,
+              "bold": true,
+              "start": 4.35,
+              "keys": {
+                "opacity": [
+                  {
+                    "t": 4.35,
+                    "v": 0,
+                    "ease": "smooth"
+                  },
+                  {
+                    "t": 4.8,
+                    "v": 1,
+                    "ease": "smooth"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
