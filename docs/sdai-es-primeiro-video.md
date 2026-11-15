@@ -13,6 +13,24 @@ Mostrar a montagem de um acionador em uma mesma edificação didática: ambiente
 
 Priorizar localização e percurso no primeiro episódio. A altura é candidata a uma terceira demonstração, após a leitura das demais fontes. Não concluir diferenças, equivalências, superioridade ou substituição entre referenciais a partir de memória, resumos ou dados de apenas um lado.
 
+## Entrega autoral e validação das comparações
+
+**Critério esclarecido pela autora em 15/11/2026:** apresentar objetivos, pontos em comum, diferenças verificadas e consequências práticas em animação autoral, sem entregar ou reproduzir as normas. A leitura do texto normativo é obrigatória para confirmar a exatidão; material encontrado na internet não substitui essa conferência.
+
+| Parte da entrega | Base necessária |
+| --- | --- |
+| Objetivo de cada referencial | Escopo efetivamente consultado; se houver apenas metadados do catálogo, identificar essa limitação. |
+| Ponto em comum | Itens dos dois referenciais lidos, com condições de aplicação comparáveis; sem concluir equivalência entre sistemas. |
+| Diferença | Textos aplicáveis de ambos os referenciais consultados; demonstrar apenas o contraste que eles sustentam. |
+| Exigência estadual | Referência separada ao CBMES, com alterações pertinentes conferidas. |
+| Explicação visual | Roteiro e geometria coerentes com os itens lidos, em linguagem e desenhos autorais. |
+
+Para cada afirmação, registrar documento, edição, item, data da consulta, condições e exceções relevantes, síntese autoral e cena correspondente. A conferência final deve confrontar roteiro, narração, cotas e animação com os itens consultados, incluindo erratas e alterações aplicáveis.
+
+**Condição de publicação:** nenhuma comparação ABNT/CBMES × NFPA recebe status de validada ou é publicada como requisito confirmado antes da leitura das fontes normativas aplicáveis por acesso autorizado. Artigos, resultados de busca, memória do modelo, respostas de outras IAs e ausência de informação não comprovam exigência, diferença ou equivalência. Um campo pendente continua pendente.
+
+A opção por uma síntese autoral preserva o formato educativo pretendido, mas não resolve por si uma restrição de acesso ou de uso da plataforma. O acesso ao texto deve respeitar a licença aplicável; enquanto isso não estiver resolvido, registrar a pendência e evitar conclusões normativas.
+
 ## Fontes e acesso
 
 | Fonte | Edição / identificação | O que foi consultado | Situação |
