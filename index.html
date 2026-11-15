@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#101e3d" />
   <meta name="description" content="Norma em Cena: estudo técnico em movimento, com aulas autorais, comparativos e estúdio de edição." />
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css?v=sdai-vista" />
   <title>Norma em Cena — Estudo técnico em movimento</title>
 </head>
 <body>
@@ -18,11 +18,22 @@
     </header>
     <main>
       <section class="page page--library" id="biblioteca" data-page="biblioteca">
-        <section class="hero">
-          <div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> LABORATÓRIO VISUAL DE NORMAS</div><h1>O conhecimento técnico<br/>merece <span>ganhar movimento.</span></h1><p>Explore conceitos, organize fontes e transforme a leitura normativa em experiências visuais. Com rigor na referência. Com liberdade para aprender.</p><div class="hero-buttons"><button class="button button--light" id="watch-first">▶ &nbsp; Assistir à introdução</button><button class="button button--ghost" id="go-studio">Abrir o estúdio <span>↗</span></button></div><div class="hero-foot"><span><i></i> Roteiro autoral recuperado</span><span>•</span><span>Exige validação para conteúdos normativos</span></div></div>
-          <div class="hero-graphic" aria-hidden="true"><div class="hero-glow"></div><div class="orbit orbit--1"></div><div class="orbit orbit--2"></div><div class="hero-board hero-board--back"><small>LEITURA</small><strong>NFPA</strong><span class="mini-line"></span><span class="mini-line short"></span></div><div class="hero-board hero-board--front"><small>COMPARAÇÃO</small><strong>ABNT NBR</strong><span class="mini-line"></span><span class="mini-line short"></span></div><div class="hero-focus"><span>✦</span></div><div class="graph-spot spot-1"></div><div class="graph-spot spot-2"></div></div>
+        <section class="hero hero--episodio">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> SDAI · ESPÍRITO SANTO</div>
+            <h1>Onde instalar o acionador manual?</h1>
+            <p>Acompanhe a montagem junto à entrada e siga o percurso em planta, com base na NT 17/2013 do CBMES.</p>
+            <div class="hero-buttons">
+              <a class="button button--primary" href="./studio.html?assistir=sdai-es-previa-cbmes">▶ Assistir à prévia</a>
+              <a class="button button--outline" href="./studio.html?aula=sdai-es-previa-cbmes">Abrir no estúdio ↗</a>
+            </div>
+            <div class="hero-foot"><span>CBMES · NT 17/2013, item 5.9</span><span>22 s</span></div>
+          </div>
+          <figure class="hero-figure">
+            <img src="./assets/sdai-acionador.svg" alt="Acionador manual vermelho instalado junto à porta em uma vista em perspectiva" width="760" height="446" />
+          </figure>
         </section>
-        <section class="content-wrap"><div class="section-heading"><div><span class="section-kicker">SUA BIBLIOTECA</span><h2>Aprender por cenas.</h2><p>Comece pelo método. As aulas técnicas só serão liberadas após conferência das normas.</p></div><button class="button button--subtle" id="new-lesson-library">＋ Criar aula</button></div><div id="lesson-grid" class="lesson-grid"></div><div class="insight-row"><div class="insight-card"><span class="insight-icon">◎</span><div><strong>Fontes antes de conclusões</strong><p>Referências oficiais e edição identificada em cada módulo técnico.</p></div></div><div class="insight-card"><span class="insight-icon">◇</span><div><strong>Estúdio reutilizável</strong><p>Cenas, narrações e comparações editáveis sem reescrever o site.</p></div></div><div class="insight-card"><span class="insight-icon">↗</span><div><strong>Feito para o celular</strong><p>Assista e estude no navegador, com layout responsivo.</p></div></div></div></section>
+        <section class="content-wrap"><div class="section-heading"><div><h2>Biblioteca de animações</h2></div><button class="button button--subtle" id="new-lesson-library">＋ Criar aula</button></div><div id="lesson-grid" class="lesson-grid"></div><div class="insight-row"><div class="insight-card"><span class="insight-icon">◎</span><div><strong>Fontes antes de conclusões</strong><p>Referências oficiais e edição identificada em cada módulo técnico.</p></div></div><div class="insight-card"><span class="insight-icon">◇</span><div><strong>Estúdio reutilizável</strong><p>Cenas, narrações e comparações editáveis sem reescrever o site.</p></div></div><div class="insight-card"><span class="insight-icon">↗</span><div><strong>Feito para o celular</strong><p>Assista e estude no navegador, com layout responsivo.</p></div></div></div></section>
       </section>
       <section class="page page--studio hidden" data-page="studio" id="studio"><div class="studio-shell"><div class="studio-intro"><div><span class="section-kicker">ESTÚDIO DE CRIAÇÃO</span><h2>Seu conteúdo. Sua direção.</h2><p>Edite cenas, personalize movimentos e reveja cada etapa.</p></div><div class="studio-controls"><button class="button button--subtle" id="import-btn">↥ Importar</button><button class="button button--primary" id="export-btn">↧ Salvar cópia (.json)</button></div></div>
        <div class="studio-topbar"><label for="lesson-select" class="field-label">AULA EM EDIÇÃO</label><select id="lesson-select" aria-label="Escolher aula"></select><span class="status-chip" id="status-chip">Autoral</span><div class="studio-top-spacer"></div><button id="add-scene" class="text-action">＋ Nova cena</button></div>
@@ -37,6 +48,6 @@
     <div id="toast" class="toast" aria-live="polite"></div>
     <input id="file-input" type="file" accept=".json,application/json" hidden />
   </div>
-  <script type="module" src="./js/app.js?v=sdai-catalogo"></script>
+  <script type="module" src="./js/app.js?v=sdai-vista"></script>
 </body>
 </html>

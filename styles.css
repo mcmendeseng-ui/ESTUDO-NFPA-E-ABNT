@@ -32,3 +32,8 @@
 .cue-mark{position:absolute;top:-3px;width:5px;height:6px;background:#e58a50;border-radius:2px;pointer-events:none;transform:translateX(-50%)}
 
 .primary-nav a.nav-link{text-decoration:none}
+
+.hero--episodio{max-width:1370px;min-height:0;margin:25px auto 0;padding:34px 44px;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:center;color:#121e35;border:1px solid #dce7f3;border-radius:24px;background:linear-gradient(132deg,#fff 25%,#edf5ff 100%)}
+.hero--episodio::after{display:none}.hero--episodio h1{font-size:clamp(35px,4.25vw,66px);line-height:1.03;margin:20px 0}.hero--episodio .eyebrow{color:#156661}.hero--episodio .hero-copy>p{font-size:16px;color:#405774;line-height:1.6}.hero--episodio .hero-foot{color:#405774;font-size:12px;gap:15px}.hero-figure{margin:0}.hero-figure img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 22px #16335c24)}
+@media(max-width:1440px){.hero--episodio{margin-inline:24px}}
+@media(max-width:720px){.hero--episodio{grid-template-columns:1fr;margin:12px;padding:23px 17px;gap:8px}.hero--episodio .hero-buttons{margin-top:18px;gap:7px}.hero--episodio .hero-buttons .button{font-size:12px;padding:10px 12px}.hero--episodio .hero-foot{margin-top:13px}.hero-figure{max-width:470px;margin-inline:auto}}

@@ -123,8 +123,6 @@ function updateSceneField(key,value){
 function init(){
  refreshLibrary();renderStudio();
  document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.nav)));
- el('watch-first').addEventListener('click',()=>{selectLesson(0);setPage('studio');startPlay()});
- el('go-studio').addEventListener('click',()=>location.assign('./studio.html'));
  el('new-lesson-library').addEventListener('click',()=>location.assign('./studio.html?novo=1'));
  el('lesson-grid').addEventListener('click',e=>{const watch=e.target.closest('[data-card-watch]');const edit=e.target.closest('[data-card-edit]');if(watch){selectLesson(Number(watch.dataset.cardWatch));setPage('studio');startPlay()}else if(edit){const item=project.lessons[Number(edit.dataset.cardEdit)];location.assign('./studio.html?aula='+encodeURIComponent(item.id))}});
  el('lesson-select').addEventListener('change',e=>selectLesson(Number(e.target.value)));
