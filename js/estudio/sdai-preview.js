@@ -8,7 +8,7 @@ export const sdaiPreview = {
 };
 
 export async function loadSdaiPreview() {
-  const url = new URL('../../projects/sdai-es-previa-cbmes.json?v=montagem', import.meta.url);
+  const url = new URL('../../projects/sdai-es-previa-cbmes.json?v=montagem-2', import.meta.url);
   const response = await fetch(url);
   if (!response.ok) throw Error('Não foi possível carregar a prévia de SDAI. Tente recarregar a página.');
   return response.json();
