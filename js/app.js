@@ -1,3 +1,4 @@
+import { sdaiPreview } from './estudio/sdai-preview.js';
 import { load as loadStudio } from './estudio/store.js';
 import {DEFAULT_PROJECT,newScene,newLesson,timeLabel,lessonDuration,locateScene,clamp,makeId} from './data.js';
 import {loadProject,saveProject,exportProject,readProject} from './storage.js';
@@ -6,7 +7,7 @@ import {directStage,exampleCues,MOTION_LABELS} from './choreography.js';
 
 let project=loadProject();
 const technicalDemo = { id: 'demo-quadro', title: 'Do quadro ao circuito', description: 'Abertura de quadro, vista explodida, comutação e leitura de um gráfico.', module: 'Fundamentos técnicos', scenes: Array(4) };
-let studioLessons = [technicalDemo];
+let studioLessons = [sdaiPreview, technicalDemo];
 let lessonIndex=0,sceneIndex=0,playhead=0,playing=false,narrate=false,lastFrame=0;
 let speech=null, audioPlayer=null, voiceList=[];
 const el=id=>document.getElementById(id);
@@ -20,7 +21,7 @@ function statusText(value){return {authorial:'Autoral',draft:'Em elaboração',r
 function refreshLibrary(){
   const studioCards = studioLessons.map(l => {
     const id = encodeURIComponent(l.id), title = esc(l.title);
-    return `<article class="lesson-card"><div class="lesson-thumb lesson-thumb--authorial"><span class="thumb-chip">${esc(l.module||'Estúdio')}</span><div class="thumb-float"><b>ANIMAÇÃO TÉCNICA</b></div></div><div class="lesson-body"><h3>${title}</h3><p>${esc(l.description)}</p><div class="lesson-meta"><span>▣ ${l.scenes.length} CENAS</span></div><div class="lesson-body-actions"><a class="button button--small button--primary" href="./studio.html?assistir=${id}">▶ Assistir</a><a class="button button--small button--subtle" href="./studio.html?aula=${id}">Editar ↗</a></div></div></article>`;
+    return `<article class="lesson-card"><div class="lesson-thumb lesson-thumb--authorial"><span class="thumb-chip">${esc(l.module||'Estúdio')}</span><div class="thumb-float"><b>ANIMAÇÃO TÉCNICA</b></div></div><div class="lesson-body"><h3>${title}</h3><p>${esc(l.description)}</p><div class="lesson-meta"><span>▣ ${l.scenes.length} CENAS</span>${l.id === sdaiPreview.id ? '<span>PRÉVIA CBMES</span>' : ''}</div><div class="lesson-body-actions"><a class="button button--small button--primary" href="./studio.html?assistir=${id}">▶ Assistir</a><a class="button button--small button--subtle" href="./studio.html?aula=${id}">Editar ↗</a></div></div></article>`;
   }).join('');
   el('lesson-grid').innerHTML=studioCards+project.lessons.map((l,i)=>{
     const duration=lessonDuration(l);
@@ -152,6 +153,9 @@ async function loadStudioCatalog() {
     if (!saved?.project?.lessons) return;
     studioLessons = saved.project.lessons.filter(l => !l.legacyId);
     if (!studioLessons.some(l => l.id === technicalDemo.id)) studioLessons.unshift(technicalDemo);
+    const existingPreview = studioLessons.findIndex(l => l.id === sdaiPreview.id);
+    const preview = existingPreview >= 0 ? studioLessons.splice(existingPreview, 1)[0] : sdaiPreview;
+    studioLessons.unshift(preview);
     refreshLibrary();
   } catch { /* Keep the existing catalog available if storage is disabled. */ }
 }
