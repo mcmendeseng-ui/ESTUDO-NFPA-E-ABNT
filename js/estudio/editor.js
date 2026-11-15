@@ -1013,6 +1013,19 @@ async function init() {
   project = initial;
   const wanted = params.get('assistir') || params.get('aula');
   if (wanted === 'demo-quadro' && !project.lessons.some(l => l.id === wanted)) project.lessons.unshift(demo());
+  if (wanted === 'sdai-es-previa-cbmes' && !project.lessons.some(l => l.id === wanted)) {
+    try {
+      if (project.lessons.length >= 40) throw Error('A prévia precisa de espaço para mais uma aula neste projeto.');
+      const url = new URL('../../projects/sdai-es-previa-cbmes.json', import.meta.url);
+      const response = await fetch(url);
+      if (!response.ok) throw Error('Não foi possível carregar a prévia de SDAI. Tente recarregar a página.');
+      const preview = normalize(await response.json()).lessons.find(l => l.id === wanted);
+      if (!preview) throw Error('A prévia de SDAI está indisponível.');
+      project.lessons.push(preview);
+    } catch (error) {
+      fail(error);
+    }
+  }
   // Add lessons created in the previous editor since the first migration.
   if (wanted && !project.lessons.some(l => l.id === wanted)) {
     const legacy = importLegacy(loadProject()).lessons.find(l => l.id === wanted);
