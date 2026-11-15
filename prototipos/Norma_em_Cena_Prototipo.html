@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norma em Cena · Protótipo de direção visual</title>
+<style>
+:root{color-scheme:light;--ink:#142034;--soft:#586678;--paper:#f5f3ee;--panel:#fff;--line:#d7d8d4;--red:#a72136;--royal:#2438ba;--teal:#006c73}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #4765df;outline-offset:3px}
+header,main{max-width:1420px;margin:auto;padding:18px clamp(16px,4vw,56px)}header{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}.wordmark{font-weight:900;letter-spacing:-.055em;font-size:25px}.wordmark i{font-style:normal;color:var(--red)}.proof{font-size:13px;font-weight:700;color:var(--soft)}
+.hero{padding:25px 0 21px;max-width:850px}h1{font-size:clamp(38px,6.5vw,86px);letter-spacing:-.07em;line-height:.98;margin:9px 0 18px}.hero p{font-size:clamp(16px,2vw,20px);color:var(--soft);margin:0}.tag{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.11em;color:var(--red)}
+.workspace{display:grid;grid-template-columns:minmax(0,1fr) 295px;align-items:start;gap:18px}.player,.inspector,.timeline{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.stage{aspect-ratio:16/9;background:#dce6ec;position:relative;overflow:hidden}.stage svg{display:block;width:100%;height:100%}.stage.portrait{aspect-ratio:9/16;width:min(100%,40.5vh);margin:auto}.player:has(.portrait){background:#e8edf0}
+.transport{padding:13px;display:flex;align-items:center;gap:12px;background:#fff}.transport span{font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}.transport input{flex:1;min-width:35px;accent-color:var(--royal)}
+button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:9px;padding:8px 11px;font-weight:700}button.primary{background:var(--royal);color:#fff;border-color:var(--royal)}button[aria-pressed=true]{border-color:var(--royal);background:#edf0ff;color:#1d309e}
+.inspector{padding:17px}.inspector h2,.timeline h2{font-size:18px;margin:0 0 8px}.inspector p{font-size:14px;color:var(--soft);margin:0 0 12px}.inspector label{display:grid;gap:5px;font-weight:650;margin:10px 0;font-size:14px}.inspector input,.inspector select{width:100%;min-height:42px;border:1px solid var(--line);border-radius:7px;padding:6px;color:var(--ink);background:#fff}.inspector input[type=color]{padding:3px}.inspector a{color:#2034a6}.inspector .actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.inspector .source{border-top:1px solid var(--line);padding-top:10px;margin-top:14px}.timeline{padding:14px;margin-top:13px}.beats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.beats button{text-align:left;font-size:14px;min-height:60px}.beats small{display:block;font-size:11px;font-variant-numeric:tabular-nums;color:#4e5c71}
+@media(max-width:850px){.workspace{grid-template-columns:1fr}}@media(max-width:480px){.beats{grid-template-columns:repeat(2,1fr)}.transport{gap:6px;padding:9px}.transport button{padding:7px 8px}.proof{font-size:11px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><span class="wordmark">Norma <i>em</i> Cena</span><span class="proof">Protótipo para revisão</span></header>
+<main>
+  <section class="hero"><span class="tag">DETECÇÃO E ALARME · ESPÍRITO SANTO</span><h1>O acionador está no caminho?</h1><p>Uma escolha na planta muda onde o acionador precisa ficar.</p></section>
+  <div class="workspace">
+    <div>
+      <div class="player">
+        <div class="stage" id="stage">
+          <svg id="frame" viewBox="0 0 1280 720" role="img" aria-label="Animação esquemática de um acionador manual de incêndio">
+            <defs>
+              <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M0 28V0h28" fill="none" stroke="#9aabba" opacity=".26"/></pattern>
+              <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e7eef1"/><stop offset="1" stop-color="#a5b9c6"/></linearGradient>
+              <linearGradient id="floor"><stop stop-color="#839bad"/><stop offset="1" stop-color="#c1d1d9"/></linearGradient>
+              <filter id="shadow" x="-35%" width="170%" y="-35%" height="170%"><feDropShadow dx="10" dy="15" stdDeviation="15" flood-color="#142435" flood-opacity=".24"/></filter>
+              <g id="plan">
+                <path d="M-395-162H380V170H-395Z" fill="#f3f6f5" stroke="#567384" stroke-width="12" stroke-linejoin="round"/>
+                <path d="M-389-156H374V164H-389Z" fill="url(#grid)"/>
+                <path d="M-100-160V76m-294-24h170m318-214V7" stroke="#567384" stroke-width="12" fill="none" stroke-linecap="round"/>
+                <path d="M380-61v77" stroke="#ecf1f0" stroke-width="14"/><path d="M378-61l-63 53m63 23q-46 0-63-23" fill="none" stroke="#728d9c" stroke-width="4"/>
+                <circle cx="-326" cy="-92" r="9" fill="#1d3886"/>
+                <rect x="323" y="24" width="27" height="30" rx="7" fill="#ad223a"/>
+              </g>
+              <g id="plate">
+                <rect x="-103" y="-127" width="206" height="254" rx="26" fill="#283a49"/>
+                <rect x="-84" y="-110" width="168" height="220" rx="18" fill="#536d7e" stroke="#8499a4" stroke-width="4"/>
+                <path d="M-51-66H51V67H-51Z" fill="#293b49"/>
+                <circle cx="-65" cy="-89" r="8" fill="#d0dae0"/><circle cx="65" cy="89" r="8" fill="#d0dae0"/>
+              </g>
+              <g id="cover">
+                <path d="M-91-114h161l35 27v190l-34 25H-91Z" fill="#6f1830"/>
+                <rect x="-98" y="-122" width="178" height="241" rx="24" fill="#b6243e" stroke="#ed7171" stroke-width="5"/>
+                <path d="M-75-99h131" stroke="#f18b85" stroke-width="4" stroke-linecap="round"/>
+                <rect x="-70" y="-67" width="123" height="107" rx="12" fill="#6d1931"/>
+                <rect x="-59" y="-55" width="101" height="83" rx="8" fill="#f5d6bd" stroke="#fff1dc" stroke-width="5"/>
+                <path d="M-53 16L11-51m0 73l31-39" stroke="#fff" stroke-width="7" opacity=".42"/>
+                <rect x="-38" y="-29" width="60" height="31" rx="5" fill="#bd3044"/>
+                <path d="M-56 67H41m-97 16H14" stroke="#f9b5aa" stroke-width="5" stroke-linecap="round"/>
+              </g>
+            </defs>
+            <rect x="-1980" y="-1980" width="5000" height="5000" fill="#e7ecec"/>
+            <rect x="-1980" y="-1980" width="5000" height="5000" fill="url(#grid)"/>
+            <g id="planScene">
+              <g transform="translate(650 363)">
+                <use href="#plan" filter="url(#shadow)"/>
+                <path id="shortcut" d="M-326-92L332 41" stroke="#b5263c" stroke-width="9" fill="none" stroke-dasharray="12 13" opacity=".92"/>
+                <path id="route" d="M-326-92H-171V118H296V40H328" stroke="#006c73" stroke-width="11" fill="none" stroke-linejoin="round" stroke-linecap="round" pathLength="100"/>
+                <circle id="traveler" cx="-326" cy="-92" r="12" fill="#f4a148" stroke="white" stroke-width="4"/>
+              </g>
+            </g>
+            <g id="hardware">
+              <path d="M221 510L782 590l388-106-550-78Z" fill="url(#floor)" filter="url(#shadow)"/>
+              <path d="M280 157l620 36v289l-620 43Z" fill="url(#wall)" stroke="#8198a8" stroke-width="4"/>
+              <path d="M280 157l41-26 610 34-31 28Zm620 36l31-28v290l-31 27Z" fill="#8ba2b2"/>
+              <path d="M667 221l149 5v263l-149 14Z" fill="#284257"/>
+              <path d="M679 228l125 7v249l-125 11Z" fill="#a2baca"/>
+              <path d="M697 241l93 4v229l-93 9Z" fill="#6c8a9e"/><circle cx="768" cy="373" r="6" fill="#e7f3fb"/>
+              <path id="partsGuide" d="M459 323H641" stroke="#00737b" stroke-width="5" stroke-dasharray="10 8"/>
+              <g id="basePart"><use href="#plate" filter="url(#shadow)"/></g>
+              <g id="frontPart"><use href="#cover" filter="url(#shadow)"/></g>
+              <g id="height"><path d="M388 315V503m-9-182l9-10 9 10m-18 174l9 10 9-10m-33-182h50m-50 192h50" stroke="#126875" stroke-width="5" fill="none"/>
+              <path d="M347 507H543" stroke="#126875" stroke-width="4" stroke-dasharray="8 8" fill="none"/></g>
+            </g>
+            <g id="labels" font-family="system-ui,sans-serif" fill="#142034">
+              <rect id="banner" x="50" y="39" width="680" height="114" rx="15" fill="#fff" fill-opacity=".95"/>
+              <text id="step" x="78" y="79" font-size="20" font-weight="800" fill="#a72136"></text>
+              <text id="caption" x="78" y="126" font-size="39" font-weight="850"></text>
+              <rect id="footBox" x="50" y="628" width="635" height="58" rx="12" fill="#172940"/>
+              <text id="foot" x="76" y="665" font-size="22" font-weight="650" fill="#fff"></text>
+            </g>
+          </svg>
+        </div>
+        <div class="transport">
+          <button class="primary" id="play">Reproduzir</button><button id="restart" aria-label="Voltar ao início">↺</button>
+          <input id="seek" type="range" min="0" value="0" step=".01" aria-label="Posição da animação">
+          <span id="time"></span>
+        </div>
+      </div>
+      <section class="timeline"><h2>Cenas</h2><div class="beats" id="beats"></div></section>
+    </div>
+    <aside class="inspector">
+      <h2>Editar cena</h2>
+      <label>Texto no vídeo<input id="copy" maxlength="45"></label>
+      <label>Duração em segundos<input id="seconds" type="number" min="3" max="30" step=".5"></label>
+      <label>Cor do percurso<input id="color" type="color" value="#006c73"></label>
+      <label>Enquadramento<select id="aspect"><option value="wide">16:9 · Horizontal</option><option value="portrait">9:16 · Vertical</option></select></label>
+      <div class="actions"><button id="json">Baixar ajustes</button><button id="open">Reabrir ajustes</button><input type="file" id="file" hidden accept="application/json,.json"></div>
+      <div class="source"><h2>Fonte da cena</h2><p id="reference"></p><a href="https://cb.es.gov.br/legislacoes-em-vigor">Consultar CBMES ↗</a></div>
+    </aside>
+  </div>
+</main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const defaults = [
+  {name:'O atalho', text:'A parede corta o caminho', duration:5, ref:'CBMES · NT 17/2013, item 5.9. O critério é o percurso que uma pessoa pode fazer.', foot:'Planta esquemática · trajeto direto cruza paredes'},
+  {name:'O percurso', text:'Até 30 m pelo trajeto', duration:8, ref:'CBMES · NT 17/2013, item 5.9. Até 30 m de percurso de qualquer ponto da área protegida ao acionador manual mais próximo.', foot:'Planta esquemática · limite até o acionador mais próximo'},
+  {name:'A montagem', text:'Próximo à entrada do térreo', duration:8, ref:'CBMES · NT 17/2013, item 5.9. No térreo, os acionadores ficam próximos às entradas. Nos demais pavimentos, próximos às escadas.', foot:'Montagem ilustrativa · posição junto à entrada'},
+  {name:'A altura', text:'0,90 m a 1,35 m', duration:6, ref:'CBMES · NT 17/2013, item 5.9.1, com redação do art. 2º da Portaria 456-R/2017. A altura é acima do piso acabado. A caixa deve ser visível, lacrada, com tampa de vidro e indicação de acionamento.', foot:'Altura acima do piso acabado · item 5.9.1 alterado'}
+];
+let scenes=structuredClone(defaults), t=0, current=-1, playing=false, stamp=0, raf=0;
+const limit=(x,a,b)=>Math.min(b,Math.max(a,x));
+const smooth=x=>{const p=limit(x,0,1);return p*p*(3-2*p)};
+const total=()=>scenes.reduce((sum,s)=>sum+s.duration,0);
+const offset=n=>scenes.slice(0,n).reduce((sum,s)=>sum+s.duration,0);
+const view=(id,opacity)=>$(id).setAttribute('opacity',opacity);
+function updateForm(i){
+  $('copy').value=scenes[i].text;
+  $('seconds').value=scenes[i].duration;
+  $('reference').textContent=scenes[i].ref;
+  [...$('beats').children].forEach((b,j)=>b.setAttribute('aria-pressed',String(j===i)));
+}
+function makeTimeline(){
+  $('beats').replaceChildren(...scenes.map((s,i)=>{
+    const b=document.createElement('button'), d=document.createElement('small');
+    b.append(s.name,d);
+    d.textContent=offset(i)+' s';
+    b.addEventListener('click',()=>{pause();t=offset(i);render()});
+    return b;
+  }));
+}
+function layout(){
+  const portrait=$('aspect').value==='portrait';
+  $('stage').classList.toggle('portrait',portrait);
+  $('frame').setAttribute('viewBox',portrait?'180 -380 920 1635':'0 0 1280 720');
+  $('labels').setAttribute('transform',portrait?'translate(165 0)':'');
+  $('banner').setAttribute('y',portrait?-215:39);
+  $('step').setAttribute('y',portrait?-175:79);
+  $('caption').setAttribute('y',portrait?-128:126);
+  $('footBox').setAttribute('y',portrait?873:628);
+  $('foot').setAttribute('y',portrait?910:665);
+}
+function render(){
+  let i=0;
+  while(i<scenes.length-1&&t>=offset(i+1))i++;
+  const s=scenes[i], p=(t-offset(i))/s.duration;
+  if(current!==i){current=i;updateForm(i)}
+  $('step').textContent=s.name.toLocaleUpperCase('pt-BR');
+  $('caption').textContent=s.text;
+  const caption=$('caption');
+  caption.removeAttribute('textLength');caption.removeAttribute('lengthAdjust');
+  if(caption.getComputedTextLength()>624){caption.setAttribute('textLength','624');caption.setAttribute('lengthAdjust','spacingAndGlyphs')}
+  $('foot').textContent=s.foot;
+  view('planScene',Number(i<2));view('hardware',Number(i>=2));
+  view('shortcut',i===0?smooth(p*2):0);
+  const progress=i===1?smooth((p-.05)/.81):0;
+  $('route').setAttribute('stroke',$('color').value);
+  $('route').setAttribute('stroke-dasharray',progress*100+' 104');
+  view('route',Number(i===1&&progress>0));view('traveler',Number(i===1));
+  const path=$('route'), point=path.getPointAtLength(path.getTotalLength()*progress);
+  $('traveler').setAttribute('cx',point.x);$('traveler').setAttribute('cy',point.y);
+  const f=smooth((p-.18)/.56), b=smooth(p/.28);
+  $('basePart').setAttribute('transform','translate('+ (461-98*(1-b)) +' 323) scale(.55)');
+  $('frontPart').setAttribute('transform','translate('+ (i===2?461+190*(1-f):461)+' '+(i===2?323-63*(1-f):323)+') scale(.56)');
+  if(i===3)$('basePart').setAttribute('transform','translate(461 323) scale(.55)');
+  view('partsGuide',i===2?1-f:0);view('height',i===3?smooth(p*3):0);
+  $('seek').max=String(total());$('seek').value=String(t);
+  $('time').textContent=Math.floor(t)+' / '+total()+' s';
+}
+function pause(){playing=false;cancelAnimationFrame(raf);$('play').textContent='Reproduzir'}
+function tick(now){
+  t=Math.min(total(),t+(now-stamp)/1000);stamp=now;render();
+  if(t>=total())pause();else raf=requestAnimationFrame(tick);
+}
+$('play').addEventListener('click',()=>{if(playing){pause();return}if(t>=total())t=0;playing=true;stamp=performance.now();$('play').textContent='Pausar';raf=requestAnimationFrame(tick)});
+$('restart').addEventListener('click',()=>{pause();t=0;render()});
+$('seek').addEventListener('input',e=>{pause();t=Number(e.target.value);render()});
+$('copy').addEventListener('input',e=>{scenes[current].text=e.target.value;render()});
+$('seconds').addEventListener('change',e=>{pause();const i=current;scenes[i].duration=limit(Number(e.target.value)||defaults[i].duration,3,30);t=offset(i);makeTimeline();current=-1;render()});
+$('color').addEventListener('input',render);
+$('aspect').addEventListener('change',()=>{layout();render()});
+$('json').addEventListener('click',()=>{
+  const data={version:1,scenes:scenes.map(({text,duration})=>({text,duration})),color:$('color').value,aspect:$('aspect').value};
+  const href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})), a=document.createElement('a');
+  a.href=href;a.download='norma-em-cena-ajustes.json';a.click();setTimeout(()=>URL.revokeObjectURL(href),2000);
+});
+$('open').addEventListener('click',()=>$('file').click());
+$('file').addEventListener('change',async e=>{
+  try{
+    const file=e.target.files[0];if(!file)return;
+    if(file.size>100000)throw Error();
+    const data=JSON.parse(await file.text());
+    if(data.version!==1||!Array.isArray(data.scenes)||data.scenes.length!==defaults.length||!/^#[0-9a-f]{6}$/i.test(data.color)||!['wide','portrait'].includes(data.aspect))throw Error();
+    const next=defaults.map((s,i)=>{
+      const d=data.scenes[i];
+      if(typeof d?.text!=='string'||!Number.isFinite(d.duration)||d.duration<3||d.duration>30)throw Error();
+      return {...s,text:d.text.slice(0,45),duration:d.duration};
+    });
+    pause();scenes=next;$('color').value=data.color;$('aspect').value=data.aspect;t=0;makeTimeline();current=-1;layout();render();
+  }catch{alert('O arquivo de ajustes não pôde ser aberto.')}finally{e.target.value=''}
+});
+makeTimeline();layout();render();
+</script>
+</body>
+</html>
