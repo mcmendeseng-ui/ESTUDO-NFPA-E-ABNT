@@ -71,7 +71,7 @@ A NT também descreve condições construtivas do acionador. A seleção acima n
 
 O [projeto editável](../projects/sdai-es-previa-cbmes.json) tem duas cenas em 16:9 e duração total de 18 segundos. A primeira aproxima as peças do acionador até a posição de montagem junto à entrada. A segunda acompanha o trajeto na planta, contorna uma divisória e mostra o limite estadual de 30 m. A planta é ilustrativa e não tem escala.
 
-Abra a prévia pelo botão **Abrir prévia editável · SDAI no Espírito Santo** na biblioteca ou pelo [link direto para o estúdio](https://mcmendeseng-ui.github.io/ESTUDO-NFPA-E-ABNT/studio.html?aula=sdai-es-previa-cbmes). O editor acrescenta a aula ao projeto aberto e reutiliza alterações salvas neste navegador. A aba atual de exportação oferece resoluções 16:9. A composição vertical fica pendente do suporte a 9:16.
+Na biblioteca, a primeira aula **Onde instalar o acionador manual?** oferece **Assistir** e **Editar**. A prévia também aparece na lista **Treinamento** do estúdio e pode ser aberta pelo [link direto](https://mcmendeseng-ui.github.io/ESTUDO-NFPA-E-ABNT/studio.html?aula=sdai-es-previa-cbmes). O editor acrescenta a aula ao projeto aberto e reutiliza alterações salvas neste navegador. A aba atual de exportação oferece resoluções 16:9. A composição vertical fica pendente do suporte a 9:16.
 
 As duas cenas usam somente o item 5.9 da NT 17/2013 do CBMES. A cota de altura não está representada. O arquivo inclui texto de narração editável. A prévia não tem áudio gravado e não é o episódio comparativo.
 
