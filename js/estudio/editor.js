@@ -1,4 +1,4 @@
-import { sdaiPreview, loadSdaiPreview } from './sdai-preview.js';
+import { sdaiPreview, loadSdaiPreview } from './sdai-preview.js?v=montagem-2';
 import { loadProject } from '../storage.js';
 import { ASSETS, W, H, OBJECT_KEYS, CAMERA_KEYS, EASES, MOTIONS, uid, clamp, normalize,
   object, newScene, newLesson, applyMotion, resizeScene, copyItem } from './model.js';

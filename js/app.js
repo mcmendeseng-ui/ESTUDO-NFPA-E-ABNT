@@ -1,4 +1,4 @@
-import { sdaiPreview } from './estudio/sdai-preview.js';
+import { sdaiPreview } from './estudio/sdai-preview.js?v=montagem-2';
 import { load as loadStudio } from './estudio/store.js';
 import {DEFAULT_PROJECT,newScene,newLesson,timeLabel,lessonDuration,locateScene,clamp,makeId} from './data.js';
 import {loadProject,saveProject,exportProject,readProject} from './storage.js';
