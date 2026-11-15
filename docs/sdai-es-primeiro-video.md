@@ -44,6 +44,8 @@ O acesso ao catálogo ABNT foi concluído. O visualizador da NBR abriu sem o con
 
 O acesso à conta NFPA foi concluído, mas o LiNK exigiu aceite do contrato antes de exibir o acervo. Aceite pendente da autora. A licença apresentada também contém, no item 2.8, restrição à análise por IA e extração sem autorização expressa da NFPA; o aceite de uso, isoladamente, não deve ser registrado como essa autorização. Nenhum requisito da NFPA 72 foi lido.
 
+A página pública da NFPA 72 também oferece **View Free Access** para a edição de 2025. Ao abrir o link, o site encaminhou para o login da NFPA. O procedimento oficial informa que essa modalidade exige aceitar seus próprios termos. A autorização de uso para o projeto e a leitura do texto continuam pendentes.
+
 ## Requisitos estaduais selecionados
 
 Sínteses autorais para rastreabilidade, sem reprodução integral dos documentos.
@@ -65,6 +67,14 @@ A NT também descreve condições construtivas do acionador. A seleção acima n
 - Conferir se cada par trata do mesmo componente, grandeza, condição e hipótese de aplicação. Campos ausentes ficam pendentes, não “sem exigência”.
 - Decidir o que pode ser comparado somente depois dessa conferência. Eventuais diferenças ABNT/CBMES também permanecem identificadas por origem.
 
+## Prévia editável do CBMES
+
+O [projeto editável](../projects/sdai-es-previa-cbmes.json) tem duas cenas em 16:9 e duração total de 18 segundos. A primeira aproxima as peças do acionador até a posição de montagem junto à entrada. A segunda acompanha o trajeto na planta, contorna uma divisória e mostra o limite estadual de 30 m. A planta é ilustrativa e não tem escala.
+
+Para abrir a prévia, baixe o JSON e use **Importar** no estúdio do site. O estúdio abre o projeto importado e conserva a cópia anterior no histórico local. A aba atual de exportação oferece resoluções 16:9. A composição vertical fica pendente do suporte a 9:16.
+
+As duas cenas usam somente o item 5.9 da NT 17/2013 do CBMES. A cota de altura não está representada. O arquivo inclui texto de narração editável. A prévia não tem áudio gravado e não é o episódio comparativo.
+
 ## Direção de produção
 
 Duração editorial inicial: 45–60 segundos, ajustável após o roteiro verificado. Construir equipamento e ambiente em camadas editáveis; animar fixação, enquadramento e medição. Usar a mesma geometria nas duas abordagens. Aplicar cores de apoio aos equipamentos e às cotas, preservando a identidade do site.
@@ -84,7 +94,8 @@ Depois da consulta: acrescentar rastreabilidade estruturada ao projeto e às cen
 - [Portarias do CBMES — coletânea oficial](https://cb.es.gov.br/portarias-anexos)
 - [Coletânea consultada — Portaria 456-R, art. 2º, página 422 do PDF](https://cb.es.gov.br/media/PDF%27s/Col%C3%AAtanea%20de%20Portaria%20R.pdf?v=1781726104000#page=422)
 - [Portal ABNT Confea/Crea/Mútua — pesquisar 17240](https://www.abntcatalogo.com.br/confea/default.aspx)
-- [Página oficial de identificação da NFPA 72 consultada](https://www.nfpa.org/codes-and-standards/nfpa-10-standard-development/72)
+- [Página oficial da NFPA 72](https://www.nfpa.org/codes-and-standards/fire-alarm-codes-and-standards/72)
+- [Instruções oficiais para leitura gratuita](https://www.nfpa.org/for-professionals/codes-and-standards/list-of-codes-and-standards/free-access)
 - [NFPA LiNK](https://link.nfpa.org/)
 
 Somente referências e sínteses autorais podem integrar o projeto público. Não incluir normas completas, credenciais, URLs de sessão ou capturas do conteúdo restrito no repositório.
